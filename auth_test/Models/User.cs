@@ -33,7 +33,7 @@ namespace auth_test.Models
     {
         [Required]
         [Display(Name = "전자 메일")]
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
