@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "로그인";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>로컬 계정을 사용하여 로그인합니다.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" name="Email" class="form-control" />
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="password" name="Password" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="로그인" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("새 사용자로 등록", "Register")
+                </p>
+                @* 암호 재설정 기능에 대해 계정 확인을 사용하도록 설정한 경우 이 항목 사용
+                    <p>
+                        @Html.ActionLink("암호를 잊으셨습니까?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
